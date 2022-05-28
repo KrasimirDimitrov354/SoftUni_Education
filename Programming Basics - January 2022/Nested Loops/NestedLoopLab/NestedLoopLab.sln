@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NestedLoopLab4", "NestedLoopLab4\NestedLoopLab4.csproj", "{2A11CDB1-9897-4EC3-9107-630ECEB3F6BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NestedLoopLab5", "NestedLoopLab5\NestedLoopLab5.csproj", "{1DDC2DD3-9DBF-49D4-AA76-093F113D38BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NestedLoopLab6", "NestedLoopLab6\NestedLoopLab6.csproj", "{96D18830-9427-4D34-AA83-752D672DC871}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NestedLoopLab1", "NestedLoopLab1\NestedLoopLab1.csproj", "{440A2FAD-3690-44A5-888A-F5562DC0E2B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NestedLoopLab2", "NestedLoopLab2\NestedLoopLab2.csproj", "{D96C5502-9877-4006-905A-54B1B67118AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NestedLoopLab3", "NestedLoopLab3\NestedLoopLab3.csproj", "{BFE5007F-6583-47D0-8A16-4217435B9FC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A11CDB1-9897-4EC3-9107-630ECEB3F6BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A11CDB1-9897-4EC3-9107-630ECEB3F6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A11CDB1-9897-4EC3-9107-630ECEB3F6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A11CDB1-9897-4EC3-9107-630ECEB3F6BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DDC2DD3-9DBF-49D4-AA76-093F113D38BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDC2DD3-9DBF-49D4-AA76-093F113D38BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDC2DD3-9DBF-49D4-AA76-093F113D38BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DDC2DD3-9DBF-49D4-AA76-093F113D38BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D18830-9427-4D34-AA83-752D672DC871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D18830-9427-4D34-AA83-752D672DC871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D18830-9427-4D34-AA83-752D672DC871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D18830-9427-4D34-AA83-752D672DC871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440A2FAD-3690-44A5-888A-F5562DC0E2B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440A2FAD-3690-44A5-888A-F5562DC0E2B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440A2FAD-3690-44A5-888A-F5562DC0E2B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440A2FAD-3690-44A5-888A-F5562DC0E2B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D96C5502-9877-4006-905A-54B1B67118AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D96C5502-9877-4006-905A-54B1B67118AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D96C5502-9877-4006-905A-54B1B67118AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D96C5502-9877-4006-905A-54B1B67118AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFE5007F-6583-47D0-8A16-4217435B9FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE5007F-6583-47D0-8A16-4217435B9FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE5007F-6583-47D0-8A16-4217435B9FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE5007F-6583-47D0-8A16-4217435B9FC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD2EEF65-D13E-4BF8-A63D-8664DD7F7FFD}
+	EndGlobalSection
+EndGlobal
