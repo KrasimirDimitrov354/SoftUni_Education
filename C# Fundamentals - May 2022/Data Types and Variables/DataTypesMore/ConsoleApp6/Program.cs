@@ -4,7 +4,7 @@ namespace ConsoleApp6
 {
     class Program
     {
-        //6. Balanced Brackets
+        //6. Balanced Brackets - TO FIX
         //You will receive n lines. On those lines you will receive one of the following:
         //•	Opening bracket – “(“,
         //•	Closing bracket – “)” or
@@ -30,7 +30,6 @@ namespace ConsoleApp6
         //5                     )
         //)
         //-12
-
         static void Main()
         {
             byte n = byte.Parse(Console.ReadLine());

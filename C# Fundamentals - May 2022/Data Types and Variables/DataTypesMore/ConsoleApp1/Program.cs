@@ -25,6 +25,7 @@ namespace ConsoleApp1
             while (true)
             {
                 string input = Console.ReadLine();
+                bool isFloatingZero = false;
 
                 if (input == "END")
                 {
@@ -33,10 +34,19 @@ namespace ConsoleApp1
                 else
                 {
                     bool isNumber = double.TryParse(input, out double number);
-
+                    
                     if (isNumber)
                     {
-                        if (number % 1 == 0)
+                        if (input.Length > 2 && input[0] == '0' && (input[1] == ',' || input[1] == '.'))
+                        {
+                            isFloatingZero = true;
+                        }
+                        else
+                        {
+                            isFloatingZero = false;
+                        }
+
+                        if (number % 1 == 0 && isFloatingZero == false)
                         {
                             Console.WriteLine($"{input} is integer type");
                         }
@@ -51,7 +61,7 @@ namespace ConsoleApp1
                         {
                             Console.WriteLine($"{input} is character type");
                         }
-                        else if (input == "true" || input == "false")
+                        else if (input.ToLower() == "true" || input.ToLower() == "false")
                         {
                             Console.WriteLine($"{input} is boolean type");
                         }
