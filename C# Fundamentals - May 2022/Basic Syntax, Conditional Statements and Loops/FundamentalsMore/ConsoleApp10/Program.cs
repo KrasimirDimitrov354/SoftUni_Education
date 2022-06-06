@@ -27,7 +27,7 @@ namespace ConsoleApp10
         //projector     Adding 180 chairs to cart.      projector       Adding 80 chairs to cart.
         //299.99        Adding 60 desks to cart.        399.99          Subtotal: $660.16
         //2             Subtotal: $16202.57             1               Money left: $39.84
-        //hdmi cable    Money left: $3797.43700         hdmi cable
+        //hdmi cable    Money left: $3797.43            hdmi cable
         //4.99                                          6.99
         //1                                             3
         //chair                                         chair
@@ -42,7 +42,7 @@ namespace ConsoleApp10
         //whiteboard    Adding 20 chalks to cart.
         //150           Adding 15 beanbag chairs to cart.
         //1             Subtotal: $2029.75
-        //marker        Not enough.We need $29.75 more.
+        //marker        Not enough. We need $29.75 more.
         //6.99
         //10
         //chalk
@@ -54,7 +54,60 @@ namespace ConsoleApp10
 
         static void Main()
         {
-            
+            int budget = int.Parse(Console.ReadLine());
+            int items = int.Parse(Console.ReadLine());
+            string[] itemData = new string[3];
+            double total = 0.0;
+            byte counter = 1;
+
+            for (int i = 1; i <= items * 3; i++)
+            {
+                string input = Console.ReadLine();
+
+                switch (counter)
+                {
+                    case 3:
+                        {
+                            itemData[2] = input;
+
+                            double price = double.Parse(itemData[1]);
+                            int count = int.Parse(itemData[2]);
+
+                            if (count > 1)
+                            {
+                                Console.WriteLine($"Adding {count} {itemData[0]}s to cart.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Adding {count} {itemData[0]} to cart.");
+                            }
+
+                            total += price * count;
+                            counter = 1;
+                            break;
+                        }
+
+                    case 2:
+                        itemData[1] = input;
+                        counter++;
+                        break;
+                    default:
+                        itemData[0] = input;
+                        counter++;
+                        break;
+                }
+            }
+
+            Console.WriteLine($"Subtotal: ${total:f2}");
+
+            if (budget >= total)
+            {
+                Console.WriteLine($"Money left: ${budget - total:f2}");
+            }
+            else
+            {
+                Console.WriteLine($"Not enough. We need ${total - budget:f2} more.");
+            }
         }
     }
 }

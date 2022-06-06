@@ -5,11 +5,12 @@ namespace ConsoleApp9
     class Program
     {
         //DNA Sequences
+        //You are a molecular biologist who’s on the verge of figuring out gene manipulation. But first you need to see what DNA sequences you’re working with.
         //Write a program, which prints all the possible nucleic acid sequences (A, C, G and T), in the range [AAA…TTT].
         //Each nucleic acid sequence is exactly 3 nucleotides (letters) long. Print a new line every 4 sequences.
         //Each nucleotide has a corresponding numeric value – A -> 1, C -> 2, G -> 3, T -> 4.
         //For every sequence take the sum of its elements (e.g. ACAC -> 1 + 2 + 1 + 2 = 6).
-        //If it’s equal to or larger than the match sum print the sequence with an “O” before and after it, otherwise print “X” before and after it.
+        //If it’s equal to or larger than the entered target number print the sequence with an “O” before and after it, otherwise print “X” before and after it.
         //Examples
         //Input     Output                      Input   Output                      Comments
         //5	        XAAAX XAACX OAAGO OAATO     11      XAAAX XAACX XAAGX XAATX     Combinations, where “sum >= 11”:
@@ -49,7 +50,45 @@ namespace ConsoleApp9
 
         static void Main()
         {
-            //TODO
+            int target = int.Parse(Console.ReadLine());
+            char[] sequence = new char[5];
+            char[] nucleotides = { 'X', 'A', 'C', 'G', 'T', 'O' };
+
+            for (int j = 1; j <= 4; j++)
+            {
+                for (int k = 1; k <= 4; k++)
+                {
+                    for (int l = 1; l <= 4; l++)
+                    {
+                        if (j + k + l < target)
+                        {
+                            sequence[0] = nucleotides[0];
+                            sequence[4] = nucleotides[0];
+                        }
+                        else
+                        {
+                            sequence[0] = nucleotides[5];
+                            sequence[4] = nucleotides[5];
+                        }
+
+                        sequence[1] = nucleotides[j];
+                        sequence[2] = nucleotides[k];
+                        sequence[3] = nucleotides[l];
+
+                        string output = string.Join(" ", sequence);
+                        output = output.Replace(" ", String.Empty);
+
+                        if (l == 4)
+                        {
+                            Console.WriteLine(output);
+                        }
+                        else
+                        {
+                            Console.Write($"{output} ");
+                        }
+                    }
+                }
+            }
         }
     }
 }
