@@ -19,7 +19,6 @@ namespace ConsoleApp3
         //                              -2.5 => -3
         //                              -1.50 => -2
         //                              0 => 0
-        //TO FIX
         static void Main(string[] args)
         {
             string[] numbers = Console.ReadLine().Split(' ');
@@ -28,7 +27,7 @@ namespace ConsoleApp3
             for (int i = 0; i < numbers.Length; i++)
             {
                 numbersConverted[i] = double.Parse(numbers[i]);
-                Console.WriteLine($"{numbers[i]} => {(int)Math.Round(numbersConverted[i], MidpointRounding.AwayFromZero)}");
+                Console.WriteLine($"{numbersConverted[i]} => {(int)Math.Round(numbersConverted[i], MidpointRounding.AwayFromZero)}");
             }
         }
     }
