@@ -54,6 +54,7 @@ namespace ConsoleApp10
 
             int[] field = new int[fieldSize];
 
+            //if index of field and value of position match, there is a ladybug present
             for (int i = 0; i < positions.Length; i++)
             {
                 int currentPosition = int.Parse(positions[i]);
@@ -83,16 +84,20 @@ namespace ConsoleApp10
                     string indexOfDirection = command[1];
                     int indexOfSpaces = int.Parse(command[2]);
 
+                    //checks if position is within the scope of field[]
                     bool withinField = indexOfPosition >= 0 && indexOfPosition <= field.Length - 1;
 
                     if (withinField)
                     {
+                        //checks if ladybug is on position and if ladybug is moving
                         bool isMoving = field[indexOfPosition] == 1 && indexOfSpaces != 0;
 
                         if (isMoving)
                         {
-                            field[indexOfPosition] = 0;
+                            field[indexOfPosition] = 0; //removes ladybug from position
 
+                            //determines direction of movement based on indexOfDirection ("right" or "left") and positive or negative value of indexOfSpaces
+                            //i.e. if indexOfDirection is "right" and indexOfSpaces is negative, the ladybug moves to the left
                             switch (indexOfDirection)
                             {
                                 case "right":

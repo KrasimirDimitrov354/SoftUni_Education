@@ -4,7 +4,7 @@ namespace ConsoleApp9
 {
     class Program
     {
-        //Kamino Factory (70/100, to fix)
+        //Kamino Factory (40/100, to fix)
         //The clone factory in Kamino got another order to clone troops. But this time you are tasked to find the best DNA sequence to use in the production. 
         //You will receive the DNA length and until you receive the command "Clone them!" you will be receiving a DNA sequence of ones and zeroes, split by "!" (one or several).
         //
@@ -41,14 +41,14 @@ namespace ConsoleApp9
         static void Main(string[] args)
         {
             int lengthDNA = int.Parse(Console.ReadLine());
-            int currentSample = 0;
-            int bestSample = 1;
-            int bestSequence = 1;
-            int[] bestDNA = new int[lengthDNA];
+            string[] bestDNA = new string[lengthDNA];
 
-            int currentFirstIndexOf1 = 0;
-            int bestFirstIndexOf1 = 0;
-            bool wasNeverSet = true;
+            int counterSamples = 0;
+            int bestSample = 0;
+
+            int bestFirstIndex = 0;
+            int bestSampleSum = 0;
+            int bestSequenceLength = 0;
 
             while (true)
             {
@@ -60,88 +60,102 @@ namespace ConsoleApp9
                 }
                 else
                 {
-                    int[] currentDNA = new int[lengthDNA];
-                    currentSample++;
+                    string[] currentDNA = input.Split('!');
+                    counterSamples++;
 
-                    if (currentSample == 1)
-                    {
-                        Array.Copy(currentDNA, bestDNA, lengthDNA);
-                    }
+                    bool firstIndexNotFound = true;
 
-                    int lastNumberPosition = 0;
+                    int currentFirstIndex = 0;
+                    int currentSampleSum = 0;
+                    int currentSequenceLengthMax = 0; //variable keeps the longest sequence of 1s in the currentDNA sequence
+                    int currentSequenceLength = 0; //variable keeps the sequence of 1s until a 0 appears
+
                     for (int i = 0; i < currentDNA.Length; i++)
                     {
-                        for (int j = 0; j < input.Length; j++)
+                        int currentElement = int.Parse(currentDNA[i]);
+
+                        if (currentElement == 1)
                         {
-                            if (j == 0 && i != 0)
+                            currentSampleSum++;
+                        }
+
+                        if (i + 1 < currentDNA.Length)
+                        {
+                            int nextElement = int.Parse(currentDNA[i + 1]);
+                            if (currentElement == 1 && nextElement == 1)
                             {
-                                j = lastNumberPosition;
+                                currentSequenceLength++;
+
+                                if (currentSequenceLength > currentSequenceLengthMax)
+                                {
+                                    currentSequenceLengthMax++;
+                                }
+
+                                if (firstIndexNotFound)
+                                {
+                                    currentFirstIndex = i;
+                                    firstIndexNotFound = false;
+                                }
                             }
-
-                            bool isNumber = int.TryParse(input[j].ToString(), out int number);
-
-                            if (isNumber)
+                            else
                             {
-                                currentDNA[i] = number;
-                                lastNumberPosition = j + 1;
-                                break;
+                                currentSequenceLength = 0;
+                            }
+                        }
+                        else if (i == currentDNA.Length - 1 && firstIndexNotFound)
+                        {
+                            //if no sequence of 1s is present, search for the first occurence of 1
+                            for (int j = 0; j < currentDNA.Length; j++)
+                            {
+                                if (int.Parse(currentDNA[j]) == 1)
+                                {
+                                    currentFirstIndex = j;
+                                    firstIndexNotFound = false;
+                                    break;
+                                }
                             }
                         }
                     }
 
-                    int currentSequence = 1;
-                    int counterFirstIndexChecking = 0;
-                    for (int k = 1; k < currentDNA.Length; k++)
+                    //saves the value of the first index of 1 within the first currentDNA[] input
+                    if (counterSamples == 1)
                     {
-                        if (currentDNA[k] == 1 && currentDNA[k - 1] == 1)
+                        bestFirstIndex = currentFirstIndex;
+                    }
+
+                    //if current sequence of 1s is higher than that of the previous currentDNA[] input, change bestDNA[] values to currentDNA[] values
+                    //else if sequences are equal, check first index of 1
+                    //else if first indexes are the same, check sum of 1s
+                    if (currentSequenceLengthMax > bestSequenceLength)
+                    {
+                        bestSequenceLength = currentSequenceLengthMax;
+                        bestSample = counterSamples;
+                        bestSampleSum = currentSampleSum;
+                        Array.Copy(currentDNA, bestDNA, lengthDNA);
+                    }
+                    else if (currentSequenceLengthMax == bestSequenceLength)
+                    {
+                        if (currentFirstIndex < bestFirstIndex)
                         {
-                            currentSequence++;
-                            counterFirstIndexChecking++;
-                            if (counterFirstIndexChecking == 1)
+                            bestFirstIndex = currentFirstIndex;
+                            bestSample = counterSamples;
+                            bestSampleSum = currentSampleSum;
+                            Array.Copy(currentDNA, bestDNA, lengthDNA);
+                        }
+                        else if (currentFirstIndex == bestFirstIndex)
+                        {
+                            if (currentSampleSum > bestSampleSum)
                             {
-                                currentFirstIndexOf1 = k - 1;
-
-                                if (wasNeverSet)
-                                {
-                                    bestFirstIndexOf1 = currentFirstIndexOf1;
-                                    wasNeverSet = false;
-                                }
-                            }
-
-                            if (currentSequence > bestSequence)
-                            {
-                                bestSequence = currentSequence;
-                                bestSample = currentSample;
+                                bestSampleSum = currentSampleSum;
+                                bestSample = counterSamples;
                                 Array.Copy(currentDNA, bestDNA, lengthDNA);
                             }
-                            else if (currentSequence == bestSequence)
-                            {
-                                if (currentFirstIndexOf1 < bestFirstIndexOf1)
-                                {
-                                    bestSequence = currentSequence;
-                                    bestSample = currentSample;
-                                    Array.Copy(currentDNA, bestDNA, lengthDNA);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            currentSequence = 1;
                         }
                     }
                 }
             }
 
-            int sumOf1s = 0;
-            for (int l = 0; l < bestDNA.Length; l++)
-            {
-                if (bestDNA[l] == 1)
-                {
-                    sumOf1s++;
-                }
-            }
-
-            Console.WriteLine($"Best DNA sample {bestSample} with sum: {sumOf1s}.");
+            Console.WriteLine($"Best DNA sample {bestSample} with sum: {bestSampleSum}.");
             foreach (var element in bestDNA)
             {
                 Console.Write($"{element} ");
