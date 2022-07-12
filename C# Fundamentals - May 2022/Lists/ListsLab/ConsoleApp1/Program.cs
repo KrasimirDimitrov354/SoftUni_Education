@@ -6,7 +6,7 @@ namespace ConsoleApp1
 {
     class Program
     {
-        //Sum Adjacent Equal Numbers - 90/100
+        //Sum Adjacent Equal Numbers
         //Create a program to sum all of the adjacent equal numbers in a list of decimal numbers, starting from left to right.
         //  •	After two numbers are summed, the result could be equal to some of its neighbors and should be summed as well (see the examples below)
         //  •	Always sum the leftmost two equal neighbors (if several couples of equal neighbors are available)
@@ -18,17 +18,17 @@ namespace ConsoleApp1
 
         static void Main()
         {
-            List<int> numbers = Console.ReadLine()
+            List<double> numbers = Console.ReadLine()
                 .Split(' ')
-                .Select(int.Parse)
+                .Select(double.Parse)
                 .ToList();
 
             for (int i = 0; i < numbers.Count; i++)
             {
                 if (i != numbers.Count - 1)
                 {
-                    int currentNum = numbers[i];
-                    int nextNum = numbers[i + 1];
+                    double currentNum = numbers[i];
+                    double nextNum = numbers[i + 1];
 
                     if (currentNum == nextNum)
                     {

@@ -5,7 +5,7 @@ namespace ConsoleApp7
 {
     class Program
     {
-        //Append Arrays - 75/100
+        //Append Arrays
         //Create a program to append several arrays of numbers one after another.
         //  •	Arrays are separated by '|'
         //  •	Their values are separated by spaces (' ', one or several)
@@ -39,7 +39,7 @@ namespace ConsoleApp7
         static void Main()
         {
             string input = Console.ReadLine();
-            List<char> numbers = new List<char>();
+            List<string> numbers = new List<string>();
 
             byte counter = 0;
             bool separateArray = false;
@@ -53,25 +53,54 @@ namespace ConsoleApp7
                     if (SymbolIsSeparator(symbol))
                     {
                         separateArray = true;
-                    }                    
+                    }
                 }
                 else
                 {
-                    if (separateArray)
+                    char nextSymbol = ' ';
+
+                    if (i != input.Length - 1)
                     {
-                        numbers.Insert(0, symbol);
-                        counter = 1;
-                        separateArray = false;
+                        nextSymbol = input[i + 1];
+                    }
+
+                    bool isNumber = int.TryParse(nextSymbol.ToString(), out int result); //checks if it is a two-digit number
+
+                    if (isNumber)
+                    {
+                        i++;
+                        string num = symbol.ToString() + nextSymbol.ToString();
+
+                        if (separateArray)
+                        {
+                            numbers.Insert(0, num);
+                            counter = 1;
+                            separateArray = false;
+                        }
+                        else
+                        {
+                            numbers.Insert(counter, num);
+                            counter++;
+                        }
                     }
                     else
                     {
-                        numbers.Insert(counter, symbol);
-                        counter++;
+                        if (separateArray)
+                        {
+                            numbers.Insert(0, symbol.ToString());
+                            counter = 1;
+                            separateArray = false;
+                        }
+                        else
+                        {
+                            numbers.Insert(counter, symbol.ToString());
+                            counter++;
+                        }
                     }
                 }
             }
 
-            Console.WriteLine(string.Join(' ', numbers));           
+            Console.WriteLine(string.Join(' ', numbers));
         }
     }
 }
