@@ -4,21 +4,21 @@ namespace ConsoleApp6
 {
     class Program
     {
-        //6. Balanced Brackets - TO FIX
+        //Balanced Brackets
         //You will receive n lines. On those lines you will receive one of the following:
-        //•	Opening bracket – “(“,
-        //•	Closing bracket – “)” or
-        //•	Random string
+        //  •	Opening bracket – “(“,
+        //  •	Closing bracket – “)” or
+        //  •	Random string
         //Your task is to find out if the brackets are balanced. That means after every closing bracket should follow an opening one.
         //Nested parentheses are not valid, and if two consecutive opening brackets exist the expression should be marked as unbalanced.
         //Input
-        //•	On the first line you will receive n – the number of lines, which will follow
-        //•	On the next n lines you will receive "(", ")" or another string
+        //  •	On the first line you will receive n – the number of lines, which will follow
+        //  •	On the next n lines you will receive "(", ")" or another string
         //Output
         //You have to print "BALANCED" if the parentheses are balanced and "UNBALANCED" otherwise.
         //Constraints
-        //•	n will be in the interval [1…20]
-        //•	The length of the stings will be between [1…100] characters
+        //  •	n will be in the interval [1…20]
+        //  •	The length of the stings will be between [1…100] characters
         //Examples
         //Input     Output      Input       Output
         //8         BALANCED    6           UNBALANCED
@@ -30,76 +30,70 @@ namespace ConsoleApp6
         //5                     )
         //)
         //-12
+
         static void Main()
         {
-            byte n = byte.Parse(Console.ReadLine());
-            byte counterTwoConsecutive = 0;
-            byte counterLeft = 0;
-            byte counterRight = 0;
-            bool isBalanced = false;
+            byte linesCount = byte.Parse(Console.ReadLine());
 
-            for (int i = 1; i <= n; i++)
+            char leftParentheses = ' ';
+            char rightParentheses = ' ';
+            byte counter = 1;
+            bool isBalanced = true;
+
+            for (int i = 0; i < linesCount; i++)
             {
                 string input = Console.ReadLine();
 
-                if (input.Length > 1)
+                if (input.Length == 1)
                 {
-                    for (int j = 0; j < input.Length; j++)
+                    char symbol = char.Parse(input);
+
+                    if (symbol == '(' || symbol == ')')
                     {
-                        char symbol = input[j];
-
-                        if (symbol == '(')
+                        switch (counter)
                         {
-                            counterTwoConsecutive++;
-                        }
-                        else if (symbol == ')')
-                        {
-                            counterTwoConsecutive--;
+                            case 1:
+                                leftParentheses = symbol;
+                                counter++;
+                                break;
+                            case 2:
+                                rightParentheses = symbol;
+                                counter++;
+                                break;
+                            case 3:
+                                leftParentheses = symbol;
+                                rightParentheses = ' ';
+                                counter++;
+                                break;
+                            case 4:
+                                rightParentheses = symbol;
+                                counter = 1;
+                                break;
                         }
 
-                        if (counterTwoConsecutive == 2)
+                        if (leftParentheses == ')' || rightParentheses == '(')
                         {
                             isBalanced = false;
                         }
-
-                    }
+                    }                   
                 }
-                else
-                {
-                    bool isBracket = input == "(" || input == ")";
-
-                    if (isBracket)
-                    {
-                        switch (input)
-                        {
-                            case "(":
-                                counterLeft++;
-                                break;
-                            case ")":
-                                counterRight++;
-                                break;
-                        }
-
-                        if (counterLeft == counterRight)
-                        {
-                            isBalanced = true;
-                        }
-                        else
-                        {
-                            isBalanced = false;
-                        }
-                    }
-                }     
             }
 
-            if (isBalanced)
-            {
-                Console.WriteLine("BALANCED");
-            }
-            else
+            if (leftParentheses == ' ' || rightParentheses == ' ')
             {
                 Console.WriteLine("UNBALANCED");
             }
+            else
+            {
+                if (isBalanced)
+                {
+                    Console.WriteLine("BALANCED");
+                }
+                else
+                {
+                    Console.WriteLine("UNBALANCED");
+                }
+            }          
         }
     }
 }

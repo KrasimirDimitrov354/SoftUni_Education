@@ -74,6 +74,11 @@ namespace ConsoleApp10
 
                 if (input == "end")
                 {
+                    foreach (var index in field)
+                    {
+                        Console.Write($"{index} ");
+                    }
+
                     break;
                 }
                 else
@@ -153,11 +158,6 @@ namespace ConsoleApp10
                         }
                     }
                 }
-            }
-
-            foreach (var index in field)
-            {
-                Console.Write($"{index} ");
             }
         }
     }
