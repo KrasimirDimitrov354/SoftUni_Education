@@ -58,6 +58,7 @@ namespace ConsoleApp10
             for (int i = 0; i < positions.Length; i++)
             {
                 int currentPosition = int.Parse(positions[i]);
+
                 for (int j = 0; j < field.Length; j++)
                 {
                     if (j == currentPosition)
@@ -83,7 +84,7 @@ namespace ConsoleApp10
                 }
                 else
                 {
-                    string[] command = input.Split(' ', 3);
+                    string[] command = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
                     int indexOfPosition = int.Parse(command[0]);
                     string indexOfDirection = command[1];
@@ -108,50 +109,76 @@ namespace ConsoleApp10
                                 case "right":
                                     if (indexOfSpaces < 0)
                                     {
-                                        for (int i = indexOfPosition - Math.Abs(indexOfSpaces); i >= 0; i--)
+                                        indexOfPosition = indexOfPosition - Math.Abs(indexOfSpaces);
+                                        withinField = indexOfPosition >= 0 && indexOfPosition <= field.Length - 1;
+
+                                        if (withinField)
                                         {
-                                            if (field[i] == 0)
+                                            for (int i = indexOfPosition; i >= 0; i--)
                                             {
-                                                field[i] = 1;
-                                                break;
+                                                if (field[i] == 0)
+                                                {
+                                                    field[i] = 1;
+                                                    break;
+                                                }
                                             }
-                                        }
+                                        }                                       
                                     }
                                     else
                                     {
-                                        for (int i = indexOfPosition + indexOfSpaces; i < field.Length; i++)
+                                        indexOfPosition = indexOfPosition + indexOfSpaces;
+                                        withinField = indexOfPosition >= 0 && indexOfPosition <= field.Length - 1;
+
+                                        if (withinField)
                                         {
-                                            if (field[i] == 0)
+                                            for (int i = indexOfPosition; i < field.Length; i++)
                                             {
-                                                field[i] = 1;
-                                                break;
+                                                if (field[i] == 0)
+                                                {
+                                                    field[i] = 1;
+                                                    break;
+                                                }
                                             }
                                         }
+                                        
                                     }
                                     break;
 
                                 case "left":
                                     if (indexOfSpaces < 0)
                                     {
-                                        for (int i = indexOfPosition + Math.Abs(indexOfSpaces); i < field.Length; i++)
+                                        indexOfPosition = indexOfPosition + Math.Abs(indexOfSpaces);
+                                        withinField = indexOfPosition >= 0 && indexOfPosition <= field.Length - 1;
+
+                                        if (withinField)
                                         {
-                                            if (field[i] == 0)
+                                            for (int i = indexOfPosition; i < field.Length; i++)
                                             {
-                                                field[i] = 1;
-                                                break;
+                                                if (field[i] == 0)
+                                                {
+                                                    field[i] = 1;
+                                                    break;
+                                                }
                                             }
                                         }
+                                        
                                     }
                                     else
                                     {
-                                        for (int i = indexOfPosition - indexOfSpaces; i >= 0; i--)
+                                        indexOfPosition = indexOfPosition - indexOfSpaces;
+                                        withinField = indexOfPosition >= 0 && indexOfPosition <= field.Length - 1;
+
+                                        if (withinField)
                                         {
-                                            if (field[i] == 0)
+                                            for (int i = indexOfPosition; i >= 0; i--)
                                             {
-                                                field[i] = 1;
-                                                break;
+                                                if (field[i] == 0)
+                                                {
+                                                    field[i] = 1;
+                                                    break;
+                                                }
                                             }
-                                        }
+                                        }                                        
                                     }
                                     break;
                             }

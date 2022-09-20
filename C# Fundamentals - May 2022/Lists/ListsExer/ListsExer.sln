@@ -3,19 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{86DF55F7-CE23-414F-A6EB-2467E5AA4481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{86DF55F7-CE23-414F-A6EB-2467E5AA4481}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{A2B5F0B7-E001-4A70-81C6-3DE4EC4177CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{A2B5F0B7-E001-4A70-81C6-3DE4EC4177CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3", "ConsoleApp3\ConsoleApp3.csproj", "{06C622C8-F630-40C2-971E-E03DBE83FA96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp3", "ConsoleApp3\ConsoleApp3.csproj", "{06C622C8-F630-40C2-971E-E03DBE83FA96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp4", "ConsoleApp4\ConsoleApp4.csproj", "{91BBCEEE-DC37-442D-B230-E77F65DDCFF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp4", "ConsoleApp4\ConsoleApp4.csproj", "{91BBCEEE-DC37-442D-B230-E77F65DDCFF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp5", "ConsoleApp5\ConsoleApp5.csproj", "{960C71C6-9441-407A-B67E-DC1D508C5972}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp5", "ConsoleApp5\ConsoleApp5.csproj", "{960C71C6-9441-407A-B67E-DC1D508C5972}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp6", "ConsoleApp6\ConsoleApp6.csproj", "{8CA760A8-82BE-45FC-A19F-C13F9F65D77F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp6", "ConsoleApp6\ConsoleApp6.csproj", "{8CA760A8-82BE-45FC-A19F-C13F9F65D77F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp7", "ConsoleApp7\ConsoleApp7.csproj", "{225AA31E-39A4-48D4-86CC-DFEEC2BD1604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp7", "ConsoleApp7\ConsoleApp7.csproj", "{225AA31E-39A4-48D4-86CC-DFEEC2BD1604}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp8", "ConsoleApp8\ConsoleApp8.csproj", "{62F088DD-FE5F-4402-85FD-C8B99010B49D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp9", "ConsoleApp9\ConsoleApp9.csproj", "{20772050-BD18-42A6-9CF1-DAFCE9146DA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp10", "ConsoleApp10\ConsoleApp10.csproj", "{1D41202F-276F-45E3-981D-C1BFCA952D7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +57,18 @@ Global
 		{225AA31E-39A4-48D4-86CC-DFEEC2BD1604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{225AA31E-39A4-48D4-86CC-DFEEC2BD1604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{225AA31E-39A4-48D4-86CC-DFEEC2BD1604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62F088DD-FE5F-4402-85FD-C8B99010B49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62F088DD-FE5F-4402-85FD-C8B99010B49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62F088DD-FE5F-4402-85FD-C8B99010B49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62F088DD-FE5F-4402-85FD-C8B99010B49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20772050-BD18-42A6-9CF1-DAFCE9146DA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20772050-BD18-42A6-9CF1-DAFCE9146DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20772050-BD18-42A6-9CF1-DAFCE9146DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20772050-BD18-42A6-9CF1-DAFCE9146DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D41202F-276F-45E3-981D-C1BFCA952D7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D41202F-276F-45E3-981D-C1BFCA952D7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D41202F-276F-45E3-981D-C1BFCA952D7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D41202F-276F-45E3-981D-C1BFCA952D7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
