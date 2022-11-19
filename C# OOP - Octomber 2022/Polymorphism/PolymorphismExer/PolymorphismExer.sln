@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicles", "Vehicles\Vehicles.csproj", "{8CB2630D-46DB-45E7-9B0A-7DF76763C6FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raiding", "Raiding\Raiding.csproj", "{FC97147C-F924-48E5-96BC-B5BDCC699B1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WildFarm", "WildFarm\WildFarm.csproj", "{8134C73C-8A65-4DD3-993E-3B251FA42253}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CB2630D-46DB-45E7-9B0A-7DF76763C6FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB2630D-46DB-45E7-9B0A-7DF76763C6FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB2630D-46DB-45E7-9B0A-7DF76763C6FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB2630D-46DB-45E7-9B0A-7DF76763C6FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC97147C-F924-48E5-96BC-B5BDCC699B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC97147C-F924-48E5-96BC-B5BDCC699B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC97147C-F924-48E5-96BC-B5BDCC699B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC97147C-F924-48E5-96BC-B5BDCC699B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8134C73C-8A65-4DD3-993E-3B251FA42253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8134C73C-8A65-4DD3-993E-3B251FA42253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8134C73C-8A65-4DD3-993E-3B251FA42253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8134C73C-8A65-4DD3-993E-3B251FA42253}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D3C1E58-1414-4458-A1E1-2F131930EF9F}
+	EndGlobalSection
+EndGlobal
