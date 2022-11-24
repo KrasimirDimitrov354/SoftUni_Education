@@ -8,6 +8,7 @@ namespace CoordinateSystem
     {
         static void Main()
         {
+            Console.WriteLine("Enter figure - Square, Rectangle, Trapezoid, Triangle:");
             Figure figure = GetFigure(Console.ReadLine());
             Console.WriteLine($"Surface of {figure.Type}: {figure.CalculateSurface()}");
         }
@@ -35,8 +36,10 @@ namespace CoordinateSystem
                     break;
             }
 
-            for (int i = 0; i < countOfPoints; i++)
+            Console.WriteLine($"Enter {countOfPoints} coordinates for your {figure.Type} figure in the format [x, y].");
+            for (int i = 1; i <= countOfPoints; i++)
             {
+                Console.WriteLine($"Coordinate {i}:");
                 int[] coordinates = Console.ReadLine()
                     .Split(", ")
                     .Select(c => int.Parse(c))

@@ -16,7 +16,7 @@ namespace WildFarm
 
         public override string ToString()
         {
-            return $"{GetType().Name} [{Name}, {Math.Round(Weight, 2)}, {LivingRegion}, {FoodEaten}]";
+            return $"{GetType().Name} [{Name}, {Weight}, {LivingRegion}, {FoodEaten}]";
         }
     }
 }

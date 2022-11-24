@@ -7,8 +7,11 @@ namespace NumericalSystemConversion
     {
         static void Main()
         {
+            Console.WriteLine("Enter system to convert from - decimal, octal, hexadecimal or binary:");
             string system = Console.ReadLine();
+            Console.WriteLine("Enter number:");
             string number = Console.ReadLine();
+            Console.WriteLine("Enter system to convert to:");
             string systemToConvertTo = Console.ReadLine();
 
             Console.WriteLine(Convert(system, number, systemToConvertTo));

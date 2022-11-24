@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Raiding
 {
-    //Raiding - 60/100
+    //Raiding
     //Your task is to create a class hierarchy like the one described below. The BaseHero class should be abstract.
     //  •	BaseHero – string Name, int Power, string CastAbility()
     //      	Druid – power = 80
@@ -85,7 +85,7 @@ namespace Raiding
                 }
                 else
                 {
-                    Console.WriteLine("Invalid hero");
+                    Console.WriteLine("Invalid hero!");
                 }
             }
 
