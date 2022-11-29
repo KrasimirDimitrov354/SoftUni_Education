@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace CoordinateSystem
 {
+    //INCORRECT CALCULATIONS
     class Program
     {
         static void Main()
@@ -37,9 +38,9 @@ namespace CoordinateSystem
             }
 
             Console.WriteLine($"Enter {countOfPoints} coordinates for your {figure.Type} figure in the format [x, y].");
-            for (int i = 1; i <= countOfPoints; i++)
+            for (int i = 0; i < countOfPoints; i++)
             {
-                Console.WriteLine($"Coordinate {i}:");
+                Console.WriteLine($"Coordinate {i + 1}:");
                 int[] coordinates = Console.ReadLine()
                     .Split(", ")
                     .Select(c => int.Parse(c))
