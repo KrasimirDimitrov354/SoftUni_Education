@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_01._Row_in _Pascal's_Triangle", "_01._Row_in _Pascal's_Triangle\_01._Row_in _Pascal's_Triangle.csproj", "{3F4739A9-3823-43FE-AD82-6374306F7AC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02._Rocket", "_02._Rocket\_02._Rocket.csproj", "{47D6AB10-D0B0-4B7A-9250-809196566A77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_03._Longest_Valid_Parentheses", "_03._Longest_Valid_Parentheses\_03._Longest_Valid_Parentheses.csproj", "{AC229D0F-1619-4A36-8392-4ABC90640747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_04._Rotate_Matrix", "_04._Rotate_Matrix\_04._Rotate_Matrix.csproj", "{EE78A038-66E0-4D2B-BE5A-E8D5D45C0682}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_05._Biggest_Formed_Number", "_05._Biggest_Formed_Number\_05._Biggest_Formed_Number.csproj", "{358AEEF3-4269-4399-90B9-B1F9D89697E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F4739A9-3823-43FE-AD82-6374306F7AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4739A9-3823-43FE-AD82-6374306F7AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4739A9-3823-43FE-AD82-6374306F7AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4739A9-3823-43FE-AD82-6374306F7AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D6AB10-D0B0-4B7A-9250-809196566A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D6AB10-D0B0-4B7A-9250-809196566A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D6AB10-D0B0-4B7A-9250-809196566A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D6AB10-D0B0-4B7A-9250-809196566A77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC229D0F-1619-4A36-8392-4ABC90640747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC229D0F-1619-4A36-8392-4ABC90640747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC229D0F-1619-4A36-8392-4ABC90640747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC229D0F-1619-4A36-8392-4ABC90640747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE78A038-66E0-4D2B-BE5A-E8D5D45C0682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE78A038-66E0-4D2B-BE5A-E8D5D45C0682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE78A038-66E0-4D2B-BE5A-E8D5D45C0682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE78A038-66E0-4D2B-BE5A-E8D5D45C0682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{358AEEF3-4269-4399-90B9-B1F9D89697E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{358AEEF3-4269-4399-90B9-B1F9D89697E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{358AEEF3-4269-4399-90B9-B1F9D89697E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{358AEEF3-4269-4399-90B9-B1F9D89697E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {585246C6-BCA5-4891-8F7D-AC6A45F8B51E}
+	EndGlobalSection
+EndGlobal
