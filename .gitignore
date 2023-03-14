@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 *.zip
+C\# Databases Advanced - February 2023/Entity Relations/P02_FootballBetting/P02_FootballBetting.Data.Common/DbConfig.cs
