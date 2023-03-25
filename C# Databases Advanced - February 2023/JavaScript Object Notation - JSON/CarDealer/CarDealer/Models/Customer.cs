@@ -6,7 +6,7 @@ public class Customer
 {
     public Customer()
     {
-        Sales = new HashSet<Sale>();
+        Sales = new List<Sale>();
     }
 
     [Key]

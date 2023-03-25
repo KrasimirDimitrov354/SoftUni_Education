@@ -6,8 +6,8 @@ public class Car
 {
     public Car()
     {
-        Sales = new HashSet<Sale>();
-        PartsCars = new HashSet<PartCar>();
+        Sales = new List<Sale>();
+        PartsCars = new List<PartCar>();
     }
 
     [Key]

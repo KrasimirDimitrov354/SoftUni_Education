@@ -6,7 +6,7 @@ public class Supplier
 {
     public Supplier()
     {
-        Parts = new HashSet<Part>();
+        Parts = new List<Part>();
     }
 
     [Key]

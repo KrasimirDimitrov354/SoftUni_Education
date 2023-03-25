@@ -6,7 +6,7 @@ public class Part
 {
     public Part()
     {
-        PartsCars = new HashSet<PartCar>();
+        PartsCars = new List<PartCar>();
     }
 
     [Key]
