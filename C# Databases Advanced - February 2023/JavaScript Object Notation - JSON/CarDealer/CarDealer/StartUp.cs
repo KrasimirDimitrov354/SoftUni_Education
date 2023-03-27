@@ -24,7 +24,7 @@ public class StartUp
         //string partsJson = File.ReadAllText(@"../../../Datasets/parts.json");
         //Console.WriteLine(ImportParts(context, partsJson));
 
-        //3. Import Cars - 50/100
+        //3. Import Cars
         //string carsJson = File.ReadAllText(@"../../../Datasets/cars.json");
         //Console.WriteLine(ImportCars(context, carsJson));
 
@@ -89,22 +89,28 @@ public class StartUp
         var partDTOs = JsonConvert.DeserializeObject<ImportPartDTO[]>(inputJson);
         ICollection<Part> validParts = new HashSet<Part>();
 
+        IEnumerable<int> dbSupplierIds = context.Suppliers
+            .AsNoTracking()
+            .Select(x => x.Id)
+            .ToArray();
+
         foreach (var partDTO in partDTOs!)
         {
             Part part = mapper.Map<Part>(partDTO);
 
-            if (context.Suppliers.Any(s => s.Id == part.SupplierId))
+            if (dbSupplierIds.Any(id => id == part.SupplierId))
             {
                 validParts.Add(part);
             }
         }
 
-        context.Parts.BulkInsert(validParts);
+        context.Parts.AddRange(validParts);
+        context.SaveChanges();
 
         return $"Successfully imported {validParts.Count}.";
     }
 
-    //3. Import Cars - 50/100
+    //3. Import Cars
     public static string ImportCars(CarDealerContext context, string inputJson)
     {
         var mapper = CreateMapper();
@@ -115,36 +121,22 @@ public class StartUp
         foreach (var carDTO in carDTOs!)
         {
             Car car = mapper.Map<Car>(carDTO);
+
+            foreach (var partId in carDTO.PartsIds.DistinctBy(p => p))
+            {
+                PartCar partCar = new PartCar
+                {
+                    PartId = partId
+                };
+
+                car.PartsCars.Add(partCar);
+            }
+
             validCars.Add(car);
         }
 
-        context.Cars.BulkInsert(validCars);
-
-        //int dtoCounter = 0;
-        //ICollection<PartCar> partsCars = new HashSet<PartCar>();
-        //foreach (Car car in context.Cars)
-        //{
-        //    int currentCarId = car.Id;
-        //    var currentCarDTO = carDTOs[dtoCounter];
-
-        //    for (int i = 0; i < currentCarDTO.PartsIds.Length; i++)
-        //    {
-        //        int partId = currentCarDTO.PartsIds[i];
-        //        partsCars.Add(new PartCar
-        //        {
-        //            CarId = partId,
-        //            Car = car,
-        //            PartId = partId,
-        //            Part = context.Parts
-        //                   .Where(p => p.Id == partId)
-        //                   .First()
-        //        });
-        //    }
-
-        //    dtoCounter++;
-        //}
-
-        //context.PartsCars.BulkInsert(partsCars);
+        context.Cars.AddRange(validCars);
+        context.SaveChanges();
 
         return $"Successfully imported {validCars.Count}.";
     }
@@ -183,16 +175,6 @@ public class StartUp
         }
 
         context.Sales.BulkInsert(validSales);
-
-        foreach (var sale in context.Sales)
-        {
-            if (sale.Customer.IsYoungDriver)
-            {
-                sale.Discount += 5;
-            }
-        }
-
-        context.SaveChanges();
 
         return $"Successfully imported {validSales.Count}.";
     }

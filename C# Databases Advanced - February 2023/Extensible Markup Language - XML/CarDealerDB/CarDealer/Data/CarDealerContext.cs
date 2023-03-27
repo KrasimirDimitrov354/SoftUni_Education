@@ -8,13 +8,11 @@ public class CarDealerContext : DbContext
 {
     public CarDealerContext()
     {
-
     }
 
     public CarDealerContext(DbContextOptions options)
         : base(options)
     {
-
     }
 
     public DbSet<Car> Cars { get; set; } = null!;
@@ -30,8 +28,7 @@ public class CarDealerContext : DbContext
         {
             optionsBuilder
                 .UseSqlServer(Configuration.ConnectionString)
-                .UseLazyLoadingProxies()
-                .EnableSensitiveDataLogging(true);
+                .UseLazyLoadingProxies();
         }
     }
 
