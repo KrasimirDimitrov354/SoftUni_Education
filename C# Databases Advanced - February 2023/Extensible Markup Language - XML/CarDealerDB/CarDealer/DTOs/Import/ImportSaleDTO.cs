@@ -13,5 +13,4 @@ public class ImportSaleDTO
 
     [XmlElement("discount")]
     public decimal Discount { get; set; }
-
 }

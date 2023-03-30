@@ -1,10 +1,8 @@
-using System;
-using System.Linq;
-using System.Reflection;
 using AutoMapper;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
+
 using CarDealer;
 using CarDealer.Data;
 

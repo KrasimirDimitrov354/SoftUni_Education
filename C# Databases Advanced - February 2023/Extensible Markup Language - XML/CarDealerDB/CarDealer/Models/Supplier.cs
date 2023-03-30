@@ -4,7 +4,7 @@ public class Supplier
 {
     public Supplier()
     {
-        Parts = new HashSet<Part>();
+        this.Parts = new HashSet<Part>();
     }
 
     public int Id { get; set; }

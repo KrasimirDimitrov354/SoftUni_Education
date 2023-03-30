@@ -4,8 +4,8 @@ public class Car
 {
     public Car()
     {
-        Sales = new HashSet<Sale>();
-        PartsCars = new HashSet<PartCar>();
+        this.Sales = new HashSet<Sale>();
+        this.PartsCars = new HashSet<PartCar>();
     }
 
     public int Id { get; set; }
@@ -19,4 +19,9 @@ public class Car
     public virtual ICollection<Sale> Sales { get; set; } 
 
     public virtual ICollection<PartCar> PartsCars { get; set; }
+
+    public decimal CalculateCarPrice()
+    {
+        return this.PartsCars.Sum(pc => pc.Part.Price);
+    }
 }

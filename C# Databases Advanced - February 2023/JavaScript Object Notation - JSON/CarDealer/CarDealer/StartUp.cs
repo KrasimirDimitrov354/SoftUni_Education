@@ -16,40 +16,43 @@ public class StartUp
     {
         CarDealerContext context = new CarDealerContext();
 
-        //1. Import Suppliers
+        //Import Suppliers
         //string suppliersJson = File.ReadAllText(@"../../../Datasets/suppliers.json");
         //Console.WriteLine(ImportSuppliers(context, suppliersJson));
 
-        //2. Import Parts
+        //Import Parts
         //string partsJson = File.ReadAllText(@"../../../Datasets/parts.json");
         //Console.WriteLine(ImportParts(context, partsJson));
 
-        //3. Import Cars
+        //Import Cars
         //string carsJson = File.ReadAllText(@"../../../Datasets/cars.json");
         //Console.WriteLine(ImportCars(context, carsJson));
 
-        //4. Import Customers
+        //Import Customers
         //string customersJson = File.ReadAllText(@"../../../Datasets/customers.json");
         //Console.WriteLine(ImportCustomers(context, customersJson));
 
-        //5. Import Sales
+        //Import Sales
         //string salesJson = File.ReadAllText(@"../../../Datasets/sales.json");
         //Console.WriteLine(ImportSales(context, salesJson));
 
-        //6. Export Ordered Customers
+        //Export Ordered Customers
         //Console.WriteLine(GetOrderedCustomers(context));
 
-        //7. Export Cars from Make Toyota
+        //Export Cars from Make Toyota
         //Console.WriteLine(GetCarsFromMakeToyota(context));
 
-        //8. Export Local Suppliers
+        //Export Local Suppliers
         //Console.WriteLine(GetLocalSuppliers(context));
 
-        //9. Export Cars with Their List of Parts - TODO
+        //Export Cars with Their List of Parts
         //Console.WriteLine(GetCarsWithTheirListOfParts(context));
 
-        //10. Export Total Sales by Customer - TODO
+        //Export Total Sales by Customer - 1/2
         //Console.WriteLine(GetTotalSalesByCustomer(context));
+
+        //Export Sales with Applied Discount
+        //Console.WriteLine(GetSalesWithAppliedDiscount(context));
     }
 
     private static IMapper CreateMapper()
@@ -62,7 +65,7 @@ public class StartUp
         return mapper;
     }
 
-    //1. Import Suppliers
+    //Import Suppliers
     public static string ImportSuppliers(CarDealerContext context, string inputJson)
     {
         var mapper = CreateMapper();
@@ -81,7 +84,7 @@ public class StartUp
         return $"Successfully imported {validSuppliers.Count}.";
     }
 
-    //2. Import Parts
+    //Import Parts
     public static string ImportParts(CarDealerContext context, string inputJson)
     {
         var mapper = CreateMapper();
@@ -110,7 +113,7 @@ public class StartUp
         return $"Successfully imported {validParts.Count}.";
     }
 
-    //3. Import Cars
+    //Import Cars
     public static string ImportCars(CarDealerContext context, string inputJson)
     {
         var mapper = CreateMapper();
@@ -141,7 +144,7 @@ public class StartUp
         return $"Successfully imported {validCars.Count}.";
     }
 
-    //4. Import Customers
+    //Import Customers
     public static string ImportCustomers(CarDealerContext context, string inputJson)
     {
         var mapper = CreateMapper();
@@ -160,7 +163,7 @@ public class StartUp
         return $"Successfully imported {validCustomers.Count}.";
     }
 
-    //5. Import Sales
+    //Import Sales
     public static string ImportSales(CarDealerContext context, string inputJson)
     {
         var mapper = CreateMapper();
@@ -179,7 +182,7 @@ public class StartUp
         return $"Successfully imported {validSales.Count}.";
     }
 
-    //6. Export Ordered Customers
+    //Export Ordered Customers
     public static string GetOrderedCustomers(CarDealerContext context)
     {
         var customers = context.Customers
@@ -197,7 +200,7 @@ public class StartUp
         return JsonConvert.SerializeObject(customers, Formatting.Indented);
     }
 
-    //7. Export Cars from Make Toyota
+    //Export Cars from Make Toyota
     public static string GetCarsFromMakeToyota(CarDealerContext context)
     {
         var toyotaCars = context.Cars
@@ -217,7 +220,7 @@ public class StartUp
         return JsonConvert.SerializeObject(toyotaCars, Formatting.Indented);
     }
 
-    //8. Export Local Suppliers
+    //Export Local Suppliers
     public static string GetLocalSuppliers(CarDealerContext context)
     {
         var localSuppliers = context.Suppliers
@@ -234,42 +237,71 @@ public class StartUp
         return JsonConvert.SerializeObject(localSuppliers, Formatting.Indented);
     }
 
-    //9. Export Cars with Their List of Parts - TODO
+    //Export Cars with Their List of Parts
     public static string GetCarsWithTheirListOfParts(CarDealerContext context)
     {
-        //Get all cars along with their list of parts.
-        //For the car get the make, model and traveled distance.
-        //For the parts get the name and price, formatted to 2nd digit after the decimal point.
-        //
-        //Example:
-        //"car": {
-        //  "Make": "Opel",
-        //  "Model": "Omega",
-        //  "TraveledDistance": 176664996
-        //},
-        //"parts": [
-        //  {
-        //    "Name": "Rear Right Side Inner door handle",
-        //    "Price": "79.99"
-        //  },
-        //  {
-        //    "Name": "Door water-shield",
-        //    "Price": "123.99"
+        var carsAndParts = context.Cars
+            .Select(c => new
+            {
+                car = new
+                {
+                    c.Make,
+                    c.Model,
+                    c.TraveledDistance
+                },
+                parts = c.PartsCars.Select(p => new
+                {
+                    p.Part.Name,
+                    Price = p.Part.Price.ToString("f2")
+                })
+            })
+            .AsNoTracking()
+            .ToArray();
 
-
-        throw new NotImplementedException();
+        return JsonConvert.SerializeObject(carsAndParts, Formatting.Indented);
     }
 
-    //10. Export Total Sales by Customer
-    //public static string GetTotalSalesByCustomer(CarDealerContext context)
-    //{
-    //    var customersThatBoughtACar = context.Customers
-    //        .Where(c => c.Sales.Count != 0)
-    //        .Select(c => new
-    //        {
-    //            fullName = c.Name,
-    //            boughtCars = c.Sales.Count,
-    //            spentMoney = c.Sales.Sum(s => s.)
-    //        })
-    //}
+    //Export Total Sales by Customer - 1/2
+    public static string GetTotalSalesByCustomer(CarDealerContext context)
+    {
+        var customersThatBoughtACar = context.Customers
+            .Where(c => c.Sales.Count > 0)
+            .ToArray()
+            .Select(c => new
+            {
+                fullName = c.Name,
+                boughtCars = c.Sales.Count,
+                spentMoney = Math.Round(c.Sales.Sum(s => s.Car.PartsCars.Sum(p => p.Part.Price)), 2)
+            })
+            .OrderByDescending(c => c.spentMoney)
+            .ThenByDescending(c => c.boughtCars)
+            .ToArray();
+
+        return JsonConvert.SerializeObject(customersThatBoughtACar, Formatting.Indented);
+    }
+
+    //Export Sales with Applied Discount
+    public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+    {
+        var firstTenSales = context.Sales
+            .Take(10)
+            .Select(c => new
+            {
+                car = new
+                {
+                    c.Car.Make,
+                    c.Car.Model,
+                    c.Car.TraveledDistance
+                },
+                customerName = c.Customer.Name,
+                discount = c.Discount.ToString("f2"),
+                price = c.Car.PartsCars.Sum(pc => pc.Part.Price).ToString("f2"),
+                priceWithDiscount = (c.Car.PartsCars.Sum(pc => pc.Part.Price) - 
+                (c.Discount / 100 * c.Car.PartsCars.Sum(pc => pc.Part.Price))).ToString("f2")
+            })
+            .AsNoTracking()
+            .ToArray();
+
+        return JsonConvert.SerializeObject(firstTenSales, Formatting.Indented);
+    }
 }
