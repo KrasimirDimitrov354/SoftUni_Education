@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "No Products Found";
+}
+
+<div class="container-fluid">
+    <div class="row row-cols-4 justify-content-start" style="margin-bottom: 5px">
+        <form asp-controller="Product" asp-action="All-Products" method="get">
+            <div class="input-group">
+                <input type="search" name="keyword" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <button type="submit" class="btn btn-outline-primary">search</button>
+            </div>
+        </form>
+    </div>
+<div class="card" style="width: 18rem;">
+    <div class="card-header">@ViewData["Title"]</div>
+</div>
