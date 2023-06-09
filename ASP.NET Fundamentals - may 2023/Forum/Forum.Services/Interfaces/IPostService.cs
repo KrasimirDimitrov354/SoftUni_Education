@@ -4,7 +4,13 @@ using ViewModels.Post;
 
 public interface IPostService
 {
-    Task<IEnumerable<ListPostViewModel>> ListAllAsync();
+    Task<IEnumerable<DisplayPostViewModel>> ListAllAsync();
 
-    Task AddPostAsync(AddPostViewModel viewModel);
+    Task AddPostAsync(ModifyPostViewModel viewModel);
+
+    Task<ModifyPostViewModel> GetByIdAsync(string id);
+
+    Task EditByIdAsync(string id, ModifyPostViewModel viewModel);
+
+    Task DeleteByIdAsync(string id);
 }

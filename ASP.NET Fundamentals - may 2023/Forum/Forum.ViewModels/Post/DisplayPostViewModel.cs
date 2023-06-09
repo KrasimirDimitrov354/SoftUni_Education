@@ -1,6 +1,6 @@
 ﻿namespace Forum.ViewModels.Post;
 
-public class ListPostViewModel
+public class DisplayPostViewModel
 {
     public string Id { get; set; } = null!;
 

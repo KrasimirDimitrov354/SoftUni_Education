@@ -1,6 +1,6 @@
 ﻿@model ModifyPostViewModel
 @{
-    ViewBag.Title = "Add Post";
+    ViewBag.Title = "Edit Post";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
@@ -10,16 +10,16 @@
         <div class="form-group">
             <div class="mb-3">
                 <label asp-for="Title"></label>
-                <input asp-for="Title" class="form-control" placeholder="Write your post title here...">
+                <input asp-for="Title" class="form-control">
                 <span asp-validation-for="@Model.Title" class="small text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="Content"></label>
-                <input asp-for="Content" class="form-control" placeholder="Write your post content here...">
+                <input asp-for="Content" class="form-control">
                 <span asp-validation-for="@Model.Content" class="small text-danger"></span>
             </div>
         </div>
-        <input class="btn btn-primary mt-3" type="submit" value="Create" />
+        <input class="btn btn-primary mt-3" type="submit" value="Edit" onclick="return confirm('Are you sure you want to edit post: @Model.Title?')" />
     </form>
 </div>
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ListPostViewModel>
+﻿@model IEnumerable<DisplayPostViewModel>
 
 @{
     ViewBag.Title = "All Posts";
@@ -23,11 +23,7 @@
                         <p class="card-text">@post.Content</p>
                         <div class="d-grid gap-2">
                             <a asp-controller="Post" asp-action="Edit" asp-route-id="@post.Id" class="btn btn-warning">Edit</a>
-                            <form class="mt-2" asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id">
-                                <div class="d-grid gap-2">
-                                    <input type="submit" value="Delete" class="btn btn-danger mb-2" onclick="return confirm('Are you sure you want to delete post: @post.Title?')"/>
-                                </div>
-                            </form>
+                            <a asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-danger mb-2">Delete</a>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 using static Common.EntityValidations.Post;
 
-public class AddPostViewModel
+public class ModifyPostViewModel
 {
     [Required]
     [StringLength(TitleMaxLength, MinimumLength = TitleMinLength, ErrorMessage = InvalidTitleMessage)]

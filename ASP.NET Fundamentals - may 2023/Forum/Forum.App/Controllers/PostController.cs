@@ -19,7 +19,7 @@ public class PostController : Controller
     [HttpGet]
     public async Task<IActionResult> All()
     {
-        IEnumerable<ListPostViewModel> allPosts = await postService.ListAllAsync();
+        IEnumerable<DisplayPostViewModel> allPosts = await postService.ListAllAsync();
         return View(allPosts);
     }
 
@@ -30,7 +30,7 @@ public class PostController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add(AddPostViewModel viewModel)
+    public async Task<IActionResult> Add(ModifyPostViewModel viewModel)
     {
         if (!ModelState.IsValid)
         {
@@ -39,11 +39,76 @@ public class PostController : Controller
 
         try
         {
-            await this.postService.AddPostAsync(viewModel);
+            await postService.AddPostAsync(viewModel);
         }
         catch (Exception)
         {
-            ModelState.AddModelError(string.Empty, AddingPostException);
+            ModelState.AddModelError(string.Empty, AddingPostExceptionMessage);
+            return View(viewModel);
+        }
+
+        return RedirectToAction("All", "Post");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(string id)
+    {
+        try
+        {
+            ModifyPostViewModel postToModify = await postService.GetByIdAsync(id);
+            return View(postToModify);
+        }
+        catch (Exception)
+        {
+            return RedirectToAction("All", "Post");
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(string id, ModifyPostViewModel viewModel)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(viewModel);
+        }
+
+        try
+        {
+            await postService.EditByIdAsync(id, viewModel);
+        }
+        catch (Exception)
+        {
+            ModelState.AddModelError(string.Empty, EditingPostExceptionMessage);
+            return View(viewModel);
+        }
+
+        return RedirectToAction("All", "Post");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Delete(string id)
+    {
+        try
+        {
+            ModifyPostViewModel postToModify = await postService.GetByIdAsync(id);
+            return View(postToModify);
+        }
+        catch (Exception)
+        {
+            return RedirectToAction("All", "Post");
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(string id, ModifyPostViewModel viewModel)
+    {
+        try
+        {
+            await postService.DeleteByIdAsync(id);
+        }
+        catch (Exception)
+        {
+            ModelState.AddModelError(string.Empty, DeletingPostExceptionMessage);
             return View(viewModel);
         }
 
