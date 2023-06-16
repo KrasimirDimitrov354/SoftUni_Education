@@ -1,0 +1,37 @@
+﻿@model DisplayTasksViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">
+        Task Board: A Board for Your Tasks
+    </h1>
+</div>
+<hr />
+<section class="home-page">
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <h1 class="text-center">Welcome!</h1>
+    }
+    else
+    {
+        <h1 class="text-center">Welcome, @Model.Username!</h1>
+
+        <hr class="hr-2 bg-secondary" />
+        <h4 class="mt-4 text-center">TaskBoard is here for all your tasks.</h4>
+        <br />
+
+        <span class="boardSpan">Total tasks: <b>@Model.TasksCountTotal</b></span>
+        <span class="boardSpan">Your tasks: <b>@Model.TasksCountUser</b></span>
+        <ul>
+            @foreach (var board in Model.UserTasks)
+            {
+                <li>
+                    <span class="boardSpan">@board.BoardName: <b>@board.BoardTasksCount</b></span>
+                </li>
+            }
+        </ul>
+    }
+</section>
